@@ -96,7 +96,7 @@ public class PiterGsmTests {
                 .clickGoToBasket()
                 .clickGoToCheckout();
 
-        orderPage.checkResult();
+        orderPage.checkingTheIssuedGoods();
     }
 
     @Test
@@ -135,6 +135,6 @@ public class PiterGsmTests {
                 .clickGoToBasket()
                 .clickGoToCheckout();
 
-        orderPage.checkResult();
+        orderPage.checkingTheIssuedGoods();
     }
 }
