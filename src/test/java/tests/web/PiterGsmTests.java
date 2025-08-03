@@ -1,4 +1,4 @@
-package guru.qa;
+package tests.web;
 
 import io.qameta.allure.Epic;
 import org.junit.jupiter.api.DisplayName;
@@ -9,7 +9,7 @@ import utils.TestData;
 import static com.codeborne.selenide.Selenide.sleep;
 
 @Epic("Web")
-public class PiterGsmTests {
+public class PiterGsmTests extends TestBase{
 
     MainPage mainPage = new MainPage();
     ProfilePage profilePage = new ProfilePage();
@@ -131,9 +131,9 @@ public class PiterGsmTests {
                 .clickPriceFilter()
                 .clickColorFilter()
                 .clickBasket()
-                .clickBuy()
-                .clickGoToBasket()
-                .clickGoToCheckout();
+                .clickBuy();
+//                .clickGoToBasket()
+                cartPage.clickGoToCheckout();
 
         orderPage.checkingTheIssuedGoods();
     }

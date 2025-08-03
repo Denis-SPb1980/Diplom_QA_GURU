@@ -1,8 +1,11 @@
 package pages;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CatalogPage {
@@ -13,8 +16,15 @@ public class CatalogPage {
 
     @Step("Клик на кнопку 'Купить'")
     public CatalogPage clickBuy() {
+//        Configuration.timeout = 60000;
+//        waitForPageToLoad();
+//        buyButton.shouldBe(visible).shouldBe(enabled).click();
         buyButton.click();
         return this;
+    }
+
+    private void waitForPageToLoad() {
+        executeJavaScript("return document.readyState").equals("complete");
     }
 
     @Step("Клик на кнопку 'Перейти в корзину'")

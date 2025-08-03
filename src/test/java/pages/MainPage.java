@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -25,7 +26,8 @@ public class MainPage {
 
     @Step("Открыть страницу")
     public MainPage openPage() {
-        open("https://pitergsm.ru/");
+//        Configuration.browserSize = "1920x1080";
+        open("https://pitergsm.ru");
         actionsHelper.removeFixedElements();
         return this;
     }
