@@ -10,7 +10,7 @@ import utils.TestData;
 import static com.codeborne.selenide.Selenide.sleep;
 
 @Epic("Web")
-@Tag("web")
+//@Tag("web")
 public class PiterGsmTests {
 
     MainPage mainPage = new MainPage();
@@ -23,6 +23,7 @@ public class PiterGsmTests {
 
     //Успешная автоизация в магазине PiterGSM  5z6zx@mechanicspedia.com 123456
     @Test
+    @Tag("web")
     @DisplayName("Успешная авторизация по почте и паролю")
     public void authorizationMarketTest() {
         mainPage.openPage()
