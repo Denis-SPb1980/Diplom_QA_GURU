@@ -2,6 +2,7 @@ package tests.web;
 
 import io.qameta.allure.Epic;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.*;
 import utils.TestData;
@@ -9,7 +10,8 @@ import utils.TestData;
 import static com.codeborne.selenide.Selenide.sleep;
 
 @Epic("Web")
-public class PiterGsmTests extends TestBase{
+@Tag("web")
+public class PiterGsmTests {
 
     MainPage mainPage = new MainPage();
     ProfilePage profilePage = new ProfilePage();
@@ -131,9 +133,9 @@ public class PiterGsmTests extends TestBase{
                 .clickPriceFilter()
                 .clickColorFilter()
                 .clickBasket()
-                .clickBuy();
-//                .clickGoToBasket()
-                cartPage.clickGoToCheckout();
+                .clickBuy()
+                .clickGoToBasket()
+                .clickGoToCheckout();
 
         orderPage.checkingTheIssuedGoods();
     }

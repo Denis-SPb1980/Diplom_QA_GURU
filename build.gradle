@@ -49,9 +49,9 @@ test {
     }
 }
 
-task demoqa_test(type: Test) {
+task web_test(type: Test) {
     useJUnitPlatform {
-        includeTags("demoqa")
+        includeTags("web")
     }
 
     systemProperties(System.getProperties())
