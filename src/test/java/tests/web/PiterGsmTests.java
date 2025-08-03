@@ -82,10 +82,6 @@ public class PiterGsmTests {
         mainPage.openPage();
         headerPage.setSearch("macbook air m4")
                 .clickBasket();
-
-        sleep(5000);
-
-//        mainPage.checkProductList();
     }
 
     @Test
