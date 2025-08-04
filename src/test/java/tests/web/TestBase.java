@@ -22,6 +22,7 @@ public class TestBase {
             Configuration.browserSize = System.getProperty("screenResolution", "1920x1080");
             Configuration.baseUrl = "https://pitergsm.ru";
             Configuration.pageLoadStrategy = "eager";
+//            Configuration.headless = true;
             Configuration.remote = String.format(
                     "https://%s:%s@%s/wd/hub",
                     System.getProperty("selenoidLogin", "user1"),

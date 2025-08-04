@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 @Epic("Web")
 //@Tag("web")
-public class PiterGsmTests {
+public class PiterGsmTests extends TestBase{
 
     MainPage mainPage = new MainPage();
     ProfilePage profilePage = new ProfilePage();
