@@ -1,4 +1,4 @@
-package tests.web;
+package web.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 import static io.qameta.allure.Allure.step;
 
-public class TestBase {
+public class BaseTest {
     @BeforeAll
     static void setUp() {
         step("Открытие страницы", () -> {

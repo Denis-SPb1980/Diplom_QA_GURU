@@ -1,17 +1,19 @@
-package tests.web;
+package web.tests;
 
 import io.qameta.allure.Epic;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.*;
 import utils.TestData;
-
-import static com.codeborne.selenide.Selenide.sleep;
+import web.pages.*;
 
 @Epic("Web")
 //@Tag("web")
-public class PiterGsmTests extends TestBase{
+public class PiterGsmTests {
+
+//    @BeforeEach
+//            public void setUp(){
+//
+//    }
 
     MainPage mainPage = new MainPage();
     ProfilePage profilePage = new ProfilePage();
@@ -23,7 +25,7 @@ public class PiterGsmTests extends TestBase{
 
     //Успешная автоизация в магазине PiterGSM  5z6zx@mechanicspedia.com 123456
     @Test
-    @Tag("web")
+//    @Tag("web")
     @DisplayName("Успешная авторизация по почте и паролю")
     public void authorizationMarketTest() {
         mainPage.openPage()
