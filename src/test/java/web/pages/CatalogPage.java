@@ -13,10 +13,6 @@ public class CatalogPage {
 
     @Step("Клик на кнопку 'Купить'")
     public CatalogPage clickBuy() {
-//        Configuration.timeout = 60000;
-//        Thread.sleep(30000);
-//        waitForPageToLoad();
-//        buyButton.shouldBe(visible).shouldBe(enabled).click();
         buyButton.click();
         return this;
     }

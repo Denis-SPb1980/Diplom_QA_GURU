@@ -25,7 +25,6 @@ public class MainPage {
 
     @Step("Открыть страницу")
     public MainPage openPage() {
-//        Configuration.browserSize = "1920x1080";
         open("https://pitergsm.ru");
         actionsHelper.removeFixedElements();
         return this;

@@ -2,18 +2,21 @@ package api.tests;
 
 import api.models.ProductSearchRequest;
 import api.models.ProductSearchResponse;
-import io.restassured.response.Response;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static api.specs.SearchSpec.requestSearchSpec;
 import static api.specs.SearchSpec.responseSearchSpec;
 import static api.tests.ApiBaseTest.SEARCH_URI;
+import static core.constants.Owners.DMISHCHENKO;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.is;
 
+@Tag("all_api")
+@Owner(DMISHCHENKO)
 public class ProductSearchTests {
 
     ProductSearchRequest productSearch = new ProductSearchRequest();
@@ -27,81 +30,74 @@ public class ProductSearchTests {
         step(String.format("Поиск товара с передачей квери параметра size %s", sizeProducts), () ->
                 given(requestSearchSpec(nameProduct, sizeProducts, productSearch.getApiKey()))
 
-                .when()
-                .get(SEARCH_URI)
+                        .when()
+                        .get(SEARCH_URI)
 
-                .then()
-                .spec(responseSearchSpec(200, nameProduct, 5))
-                .extract());
+                        .then()
+                        .spec(responseSearchSpec(200, nameProduct, 5))
+                        .extract());
     }
 
     @Test
-    @DisplayName("Вызов метода без передачи в параметрах apiKey")
-    void missingSearchTermTest() {
-//        String authData = "{\"username\": \"5z6zx@mechanicspedia.com\", \"password\": \"123456\"}";
-
-        ProductSearchResponse response = given()
-                .multiPart("st", "iphone 15")
-                .multiPart("size", "5")
-//                .multiPart("apiKey", "9750TN84X6")
-                .log().uri()
-
-                .when()
-                .get(SEARCH_URI)
-
-                .then()
-                .log().status()
-                .log().body()
-                .statusCode(500)
-                .body("error", is("Internal Server Error"))
-                .body("status", is(500))
-                .body("message", is("ApiKey is null or not exist"))
-                .extract().as(ProductSearchResponse.class);
-
-//        System.out.println("Response: " + response.asString());
-    }
-
-    @Test
+    @DisplayName("Ошибка при вызове метода без передачи параметра 'apiKey'")
     void missingApiKeyTest() {
-//        String authData = "{\"username\": \"5z6zx@mechanicspedia.com\", \"password\": \"123456\"}";
 
-        Response response = given()
-                .multiPart("size", "5")
-                .multiPart("apiKey", "9750TN84X6")
-                .log().uri()
+        ProductSearchResponse response = step("Вызов метода без передачи парарметра 'apiKey'", () ->
+                given(requestSearchSpec(sizeProducts))
+                        .multiPart("st", nameProduct)
 
-                .when()
-                .get(SEARCH_URI)
+                        .when()
+                        .get(SEARCH_URI)
 
-                .then()
-                .log().status()
-                .log().body()
-                .statusCode(500)
-                .body("error", is("Internal Server Error"))
-                .body("status", is(500))
-                .body("message", is("SearchTerm is empty"))
-                .extract().response();
+                        .then()
+                        .spec(responseSearchSpec(500))
+                        .extract().as(ProductSearchResponse.class));
 
-        System.out.println("Response: " + response.asString());
+        step("Проверка полученных ошибок", () -> {
+            assertThat(response.getError()).isEqualTo("Internal Server Error");
+            assertThat(response.getMessage()).isEqualTo("ApiKey is null or not exist");
+        });
+    }
+
+    @Test
+    @DisplayName("Ошибка при вызове метода без передачи параметра 'SearchTerm'")
+    void missingSearchTermTest() {
+
+        ProductSearchResponse response = step("Вызов метода без передачи параметра 'SearchTerm'", () ->
+                given(requestSearchSpec(sizeProducts))
+                        .multiPart("apiKey", productSearch.getApiKey())
+
+                        .when()
+                        .get(SEARCH_URI)
+
+                        .then()
+                        .spec(responseSearchSpec(500))
+                        .extract().as(ProductSearchResponse.class));
+
+        step("Проверка полученных ошибок", () -> {
+            assertThat(response.getError()).isEqualTo("Internal Server Error");
+            assertThat(response.getMessage()).isEqualTo("SearchTerm is empty");
+        });
+
     }
 
     @Test
     @DisplayName("Ошибка при вызове метода с пустым значением")
     void searchQueryWasPassedEmptyTest() {
 
-        ProductSearchResponse response =  step("Вызов метода с пустым значением поиска", () ->
+        ProductSearchResponse response = step("Вызов метода с пустым значением поиска", () ->
                 given(requestSearchSpec("", sizeProducts, productSearch.getApiKey()))
 
-                .when()
-                .get(SEARCH_URI)
+                        .when()
+                        .get(SEARCH_URI)
 
-                .then()
-                .spec(responseSearchSpec(500))
-                .extract().as(ProductSearchResponse.class));
+                        .then()
+                        .spec(responseSearchSpec(500))
+                        .extract().as(ProductSearchResponse.class));
 
         step("Проверка полученных ошибок", () -> {
-                assertThat(response.getError()).isEqualTo("Internal Server Error");
-                assertThat(response.getMessage()).isEqualTo("Normalized search term is empty");
-                });
+            assertThat(response.getError()).isEqualTo("Internal Server Error");
+            assertThat(response.getMessage()).isEqualTo("Normalized search term is empty");
+        });
     }
 }

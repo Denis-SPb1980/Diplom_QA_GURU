@@ -1,6 +1,5 @@
 package api.specs;
 
-import api.models.ProductSearchResponse;
 import io.qameta.allure.Step;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
@@ -27,6 +26,16 @@ public class SearchSpec {
                 .multiPart("apiKey", apiKey);
     }
 
+    public static RequestSpecification requestSearchSpec (String size) {
+        return with()
+                .filter(withCustomTemplates())
+                .log().uri()
+                .log().body()
+                .log().headers()
+                .contentType("multipart/form-data")
+                .multiPart("size", size);
+    }
+
     @Step("Проверка ответа метода")
     public static ResponseSpecification responseSearchSpec(int expectedStatusCode, String expectedName, int expectedSize) {
         return new ResponseSpecBuilder()
@@ -47,20 +56,4 @@ public class SearchSpec {
                 .log(BODY)
                 .build();
     }
-
-//    @Step("Проверка ответа метода")
-//    public static ResponseSpecification responseAuthorizationSpec(int expectedStatusCode, boolean expectedSuccess) {
-//        return new ResponseSpecBuilder()
-//                .expectStatusCode(expectedStatusCode)
-//                .expectBody("success", is(expectedSuccess))
-//                .log(STATUS)
-//                .log(BODY)
-//                .build();
-//    }
-
 }
-
-//        .body("query", is("iphone 15"))
-//        .body("correction", is("iphone 15"))
-//        .body("products",hasSize(5))
-//        .extract().as(ProductSearchResponse .class);
