@@ -15,10 +15,12 @@ public class AuthorizationSpec {
 
     public static RequestSpecification requestAuthorizationSpec = with()
             .filter(withCustomTemplates())
+            .headers("Origin", "https://pitergsm.ru")
+            .headers("Referer", "https://pitergsm.ru/")
+            .contentType("multipart/form-data")
             .log().uri()
             .log().body()
-            .log().headers()
-            .contentType("multipart/form-data");
+            .log().headers();
 
 
     @Step("Проверка ответа метода")
