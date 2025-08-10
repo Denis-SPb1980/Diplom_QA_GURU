@@ -2,15 +2,20 @@ package api.tests;
 
 import api.models.AddToCartRequest;
 import api.models.AddToCartResponse;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static api.specs.AddToCartSpec.requestCartSpec;
 import static api.specs.AddToCartSpec.responseCartSpec;
+import static core.constants.Owners.DMISHCHENKO;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Tag("all_api")
+@Owner(DMISHCHENKO)
 public class AddToCartTests extends ApiBaseTest {
 
     AddToCartRequest toCartRequest = new AddToCartRequest();
