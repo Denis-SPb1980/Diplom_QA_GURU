@@ -1,14 +1,16 @@
 package web.tests;
 
 import io.qameta.allure.Epic;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import utils.TestData;
 import web.pages.*;
 
 @Epic("Web")
-//@Tag("web")
-public class PiterGsmTests {
+@Tag("web")
+public class PiterGsmTests extends BaseTest{
 
     MainPage mainPage = new MainPage();
     ProfilePage profilePage = new ProfilePage();
@@ -33,6 +35,7 @@ public class PiterGsmTests {
     }
 
     @Test
+    @Disabled
     @DisplayName("Успешная регистрация с заполнением всех полей")
     public void registrationMarketTest() {
         profilePage.openPage()
