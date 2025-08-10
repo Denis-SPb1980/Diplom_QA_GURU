@@ -5,6 +5,7 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import static core.constants.PiterGsmConstants.*;
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
 import static io.restassured.filter.log.LogDetail.BODY;
@@ -16,11 +17,14 @@ public class AddToCartSpec {
     public static RequestSpecification requestCartSpec(String id) {
         return with()
                 .filter(withCustomTemplates())
+                .headers("Origin", ORIGIN)
+                .headers("Referer", REFERER)
+                .headers("User-Agent", USER_AGENT)
+                .contentType("multipart/form-data")
+                .multiPart("id", id)
                 .log().uri()
                 .log().body()
-                .log().headers()
-                .contentType("multipart/form-data")
-                .multiPart("id", id);
+                .log().headers();
     }
 
     @Step("Проверка ответа метода")

@@ -5,6 +5,7 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import static core.constants.PiterGsmConstants.*;
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
 import static org.hamcrest.Matchers.is;
@@ -15,9 +16,9 @@ public class AuthorizationSpec {
 
     public static RequestSpecification requestAuthorizationSpec = with()
             .filter(withCustomTemplates())
-            .headers("Origin", "https://pitergsm.ru")
-            .headers("Referer", "https://pitergsm.ru/")
-            .headers("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36")
+            .headers("Origin", ORIGIN)
+            .headers("Referer", REFERER)
+            .headers("User-Agent", USER_AGENT)
             .contentType("multipart/form-data")
             .log().uri()
             .log().body()
