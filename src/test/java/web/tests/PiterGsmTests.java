@@ -10,11 +10,6 @@ import web.pages.*;
 //@Tag("web")
 public class PiterGsmTests {
 
-//    @BeforeEach
-//            public void setUp(){
-//
-//    }
-
     MainPage mainPage = new MainPage();
     ProfilePage profilePage = new ProfilePage();
     CartPage cartPage = new CartPage();
@@ -30,7 +25,6 @@ public class PiterGsmTests {
     public void authorizationMarketTest() {
         mainPage.openPage()
                 .clickLogin()
-                .clickLoginWithPassword()
                 .setLogin()
                 .setPassword()
                 .clickSignIn();
