@@ -61,3 +61,11 @@ task web_test(type: Test) {
 
     systemProperties(System.getProperties())
 }
+
+task api_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("all_api")
+    }
+
+    systemProperties(System.getProperties())
+}
