@@ -17,9 +17,7 @@ public class PiterGsmTests{
     HeaderPage headerPage = new HeaderPage();
     String password = testData.password;
 
-    //Успешная автоизация в магазине PiterGSM  5z6zx@mechanicspedia.com 123456
     @Test
-//    @Tag("web")
     @DisplayName("Успешная авторизация по почте и паролю")
     public void authorizationMarketTest() {
         mainPage.openPage()
