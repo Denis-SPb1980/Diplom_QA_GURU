@@ -10,8 +10,7 @@
 
 - [Технологии и инструменты](#computer-технологии-и-инструменты)
 - [Факты о проекте](#clipboard-факты-о-проекте)
-- [Web-тесты](#-web-тесты)
-- [API-тесты](#-api-тесты)
+- [Web-тесты](#heavy_check_mark-web-тесты)
 - [Команды для запуска из терминала](#arrow_forward-команды-для-запуска-из-терминала)
 - [Сборка в Jenkins](#-сборка-в-jenkins)
 - [Пример Allure-отчета](#-пример-allure-отчета)
@@ -32,9 +31,7 @@
 <code><a href="https://github.com/"><img width="5%" title="GitHub" src="media/icons/GitHub.svg"></a></code>
 <code><a href="https://www.jenkins.io/"><img width="5%" title="Jenkins" src="media/icons/Jenkins.svg"></a></code>
 <code><a href="https://github.com/allure-framework/allure2"><img width="5%" title="Allure Report" src="media/icons/Allure_Report.svg"></a></code>
-<code><a href="https://qameta.io/"><img width="5%" title="Allure TestOps" src="media/icons/AllureTestOps.svg"></a></code>
 <code><a href="https://web.telegram.org/"><img width="5%" title="Telegram" src="media/icons/Telegram.svg"></a></code>
-<code><a href="https://www.atlassian.com/software/jira"><img width="5%" title="Jira" src="media/icons/Jira.svg"></a></code>
 </p>
 
 Автотесты написаны на `Java` с использованием фреймворка `Selenide`.\
@@ -45,7 +42,6 @@
 `Selenoid` - для удаленного запуска браузера.\
 `Allure Report` - для визуализации результатов тестирования.\
 `Telegram Bot` - для уведомлений о результатах тестирования.\
-`Allure TestOps` - как система управления тестированием.
 
 ## :clipboard: Факты о проекте
 - [x] Тестовый проект состоит из UI и API автотестов
@@ -55,6 +51,54 @@
 - [x] Использование `Lombok` для моделей в API тестах
 - [x] Использование request/response спецификаций для API тестов
 - [x] Custom Allure listener для API requests/responses логов
-- [x] Интеграция с `Allure TestOps`
 - [x] Автотесты как тестовая документация
-- [x] Интеграция с `Jira`
+
+
+## :heavy_check_mark: Web-тесты
+- :white_check_mark: Авторизация и регистрация
+    - :heavy_check_mark: Успешная авторизация по почте и паролю
+    - :heavy_check_mark: Успешная регистрация с заполнением всех полей
+    - :heavy_check_mark: Ошибка регистрации при непрохождении капчи
+- :white_check_mark: Товары
+    - :heavy_check_mark: Успешный поиск продукта
+    - :heavy_check_mark: Успешное добавление товара в корзину
+    - :heavy_check_mark: Успешное оформление заказа
+    - :heavy_check_mark: Успешное удаление товара из корзины
+    - :heavy_check_mark: Успешное добавление товара в избранное
+    - :heavy_check_mark: Успешное оформление заказа с фильтрами
+ 
+## :arrow_forward: Команды для запуска из терминала
+
+### *Локальный запуск:*
+#### *Web-тесты*
+```
+gradle clean web_test
+```
+#### *API-тесты*
+```
+gradle clean api_test
+```
+### *Удалённый запуск через Jenkins:*
+```
+clean ${TASK} 
+"-Denv=remote"
+"-Dremote.url=${SELENOID_URL}" 
+"-Dremote.login=${SELENOID_LOGIN}" 
+"-Dremote.password=${SELENOID_PASSWORD}" 
+"-Dbrowser=${BROWSER}" 
+"-Dbrowser.version=${BROWSER_VERSION}"
+"-Dbrowser.size=${BROWSER_SIZE}"
+```
+### *Параметры сборки:*
+
+* <code>TASK</code> – задача для запуска.
+* <code>SELENOID_URL</code>, <code>SELENOID_LOGIN</code>, <code>SELENOID_PASSWORD</code> - необходимы для для удаленного запуска браузера.
+* <code>BROWSER</code> - браузер, в котором будут выполняться тесты.
+* <code>BROWSER_VERSION</code> – версия браузера, в которой будут выполняться тесты.
+* <code>BROWSER_SIZE</code> – размер окна браузера, в котором будут выполняться тесты.
+
+## <img src="media/icons/Jenkins.svg" title="Jenkins" width="4%"/> <a href="https://jenkins.autotests.cloud/job/qa-guru-035-dp-pitergsm//">Сборка в Jenkins</a>
+<p align="center">
+<img title="Jenkins Build" src="media/screens/Jenkins.png">
+</p>
+
