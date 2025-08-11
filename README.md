@@ -102,3 +102,32 @@ clean ${TASK}
 <img title="Jenkins Build" src="media/screens/Jenkins.png">
 </p>
 
+
+
+
+## <img src="media/icons/Allure_Report.svg" title="Allure Report" width="4%"/> <a href="https://jenkins.autotests.cloud/job/qa-guru-035-dp-pitergsm/29/allure">Пример Allure-отчета</a>
+### *Главная страница Allure-отчета*
+
+<p align="center">
+<img title="Allure Overview" src="media/screens/AllureReport.png">
+</p>
+
+
+
+
+## <img width="4%" style="vertical-align:middle" title="Telegram" src="media/icons/Telegram.svg"> Уведомления в Telegram с использованием бота
+
+После завершения сборки бот в <code>Telegram</code> автоматически обрабатывает и отправляет сообщение с результатом.
+
+<p align="center">
+<img width="70%" title="Telegram bot" src="media/screens/tg_notification.png">
+</p>
+
+
+
+## :clapper: Видео примера запуска тестов в Selenoid
+
+К каждому тесту в отчете прилагается видео прогона.
+<p align="center">
+  <img title="Selenoid Video" src="media/screens/Video.gif">
+</p>
