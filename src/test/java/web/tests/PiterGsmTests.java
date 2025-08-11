@@ -1,16 +1,13 @@
 package web.tests;
 
 import io.qameta.allure.Epic;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import utils.TestData;
 import web.pages.*;
 
 @Epic("Web")
 @Tag("web")
-public class PiterGsmTests extends BaseTest{
+public class PiterGsmTests{
 
     MainPage mainPage = new MainPage();
     ProfilePage profilePage = new ProfilePage();
@@ -78,6 +75,7 @@ public class PiterGsmTests extends BaseTest{
     }
 
     @Test
+    @DisplayName("Успешное добавление товара в корзину")
     public void addProductBasketTest() {
         mainPage.openPage();
         headerPage.setSearch("macbook air m4")
