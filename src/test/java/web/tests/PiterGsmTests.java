@@ -7,7 +7,7 @@ import web.pages.*;
 
 @Epic("Web")
 @Tag("web")
-public class PiterGsmTests{
+public class PiterGsmTests extends BaseTest{
 
     MainPage mainPage = new MainPage();
     ProfilePage profilePage = new ProfilePage();

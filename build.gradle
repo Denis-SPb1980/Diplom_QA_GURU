@@ -35,6 +35,7 @@ dependencies {
             "io.qameta.allure:allure-rest-assured:2.19.0",
             "com.github.javafaker:javafaker:1.0.2",
             'org.assertj:assertj-core:3.24.2',
+            "org.aeonbits.owner:owner:1.0.12",
             'io.qameta.allure:allure-selenide:2.19.0')
 }
 
