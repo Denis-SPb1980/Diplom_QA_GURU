@@ -26,10 +26,8 @@ public class AddToCartTests extends ApiBaseTest {
 
         step("Добавление существующего товара в корзину", () ->
                 given(requestCartSpec(toCartRequest.getId()))
-
                         .when()
                         .post("/add2basket.php")
-
                         .then()
                         .spec(responseCartSpec(200, true, toCartRequest.getId()))
                         .extract());
@@ -41,10 +39,8 @@ public class AddToCartTests extends ApiBaseTest {
 
         AddToCartResponse response = step("Добавление некорректного ID товара в корзину", () ->
                 given(requestCartSpec("0"))
-
                         .when()
                         .post("/add2basket.php")
-
                         .then()
                         .spec(responseCartSpec(200, false))
                         .extract().as(AddToCartResponse.class));

@@ -28,10 +28,8 @@ public class AuthorizationTests extends ApiBaseTest {
                 given(requestAuthorizationSpec)
                         .multiPart("username", loginRequest.getUsername())
                         .multiPart("password", loginRequest.getPassword())
-
                         .when()
                         .post("/login.php")
-
                         .then()
                         .spec(responseAuthorizationSpec(200, true))
                         .extract());
@@ -45,10 +43,8 @@ public class AuthorizationTests extends ApiBaseTest {
                 given(requestAuthorizationSpec)
                         .multiPart("username", loginRequest.getUsername())
                         .multiPart("password", loginRequest.getIncorrectPassword())
-
                         .when()
                         .post("/login.php")
-
                         .then()
                         .spec(responseAuthorizationSpec(200, false))
                         .extract().as(AuthorizationResponse.class));
@@ -64,10 +60,8 @@ public class AuthorizationTests extends ApiBaseTest {
         AuthorizationResponse response = step("Авторизация без передачи пароля", () ->
                 given(requestAuthorizationSpec)
                         .multiPart("username", loginRequest.getUsername())
-
                         .when()
                         .post("https://pitergsm.ru/local/php_interface/tools/login.php")
-
                         .then()
                         .spec(responseAuthorizationSpec(200, false))
                         .extract().as(AuthorizationResponse.class));
@@ -83,10 +77,8 @@ public class AuthorizationTests extends ApiBaseTest {
         AuthorizationResponse response = step("Авторизация без передачи email", () ->
                 given(requestAuthorizationSpec)
                         .multiPart("password", loginRequest.getPassword())
-
                         .when()
                         .post("/login.php")
-
                         .then()
                         .spec(responseAuthorizationSpec(200, false))
                         .extract().as(AuthorizationResponse.class));

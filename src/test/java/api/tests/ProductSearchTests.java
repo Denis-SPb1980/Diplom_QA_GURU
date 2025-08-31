@@ -29,10 +29,8 @@ public class ProductSearchTests {
 
         step(String.format("Поиск товара с передачей квери параметра size %s", sizeProducts), () ->
                 given(requestSearchSpec(nameProduct, sizeProducts, productSearch.getApiKey()))
-
                         .when()
                         .get(SEARCH_URI)
-
                         .then()
                         .spec(responseSearchSpec(200, nameProduct, 5))
                         .extract());
@@ -45,10 +43,8 @@ public class ProductSearchTests {
         ProductSearchResponse response = step("Вызов метода без передачи парарметра 'apiKey'", () ->
                 given(requestSearchSpec(sizeProducts))
                         .multiPart("st", nameProduct)
-
                         .when()
                         .get(SEARCH_URI)
-
                         .then()
                         .spec(responseSearchSpec(500))
                         .extract().as(ProductSearchResponse.class));
@@ -66,10 +62,8 @@ public class ProductSearchTests {
         ProductSearchResponse response = step("Вызов метода без передачи параметра 'SearchTerm'", () ->
                 given(requestSearchSpec(sizeProducts))
                         .multiPart("apiKey", productSearch.getApiKey())
-
                         .when()
                         .get(SEARCH_URI)
-
                         .then()
                         .spec(responseSearchSpec(500))
                         .extract().as(ProductSearchResponse.class));
@@ -87,10 +81,8 @@ public class ProductSearchTests {
 
         ProductSearchResponse response = step("Вызов метода с пустым значением поиска", () ->
                 given(requestSearchSpec("", sizeProducts, productSearch.getApiKey()))
-
                         .when()
                         .get(SEARCH_URI)
-
                         .then()
                         .spec(responseSearchSpec(500))
                         .extract().as(ProductSearchResponse.class));
