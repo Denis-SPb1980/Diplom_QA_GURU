@@ -5,6 +5,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
+import static constants.PiterGsmConstants.USER_AGENT;
+
 
 public class ProjectConfiguration {
     private final WebConfig webConfig;
@@ -25,7 +27,8 @@ public class ProjectConfiguration {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.of(
                     "enableVNC", true,
-                    "enableVideo", true
+                    "enableVideo", true,
+                    "userAgent", USER_AGENT
             ));
             Configuration.browserCapabilities = capabilities;
         }
