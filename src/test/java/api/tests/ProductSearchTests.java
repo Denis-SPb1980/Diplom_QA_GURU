@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static api.specs.SearchSpec.requestSearchSpec;
 import static api.specs.SearchSpec.responseSearchSpec;
 import static api.tests.ApiBaseTest.SEARCH_URI;
-import static core.constants.Owners.DMISHCHENKO;
+import static constants.Owners.DMISHCHENKO;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;

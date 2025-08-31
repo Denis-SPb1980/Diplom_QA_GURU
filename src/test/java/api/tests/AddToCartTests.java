@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static api.specs.AddToCartSpec.requestCartSpec;
 import static api.specs.AddToCartSpec.responseCartSpec;
-import static core.constants.Owners.DMISHCHENKO;
+import static constants.Owners.DMISHCHENKO;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
