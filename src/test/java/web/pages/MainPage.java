@@ -2,6 +2,8 @@ package web.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import config.ConfigReader;
+import config.WebConfig;
 import io.qameta.allure.Step;
 import utils.ActionsHelper;
 
@@ -22,6 +24,7 @@ public class MainPage {
     private final SelenideElement basketButton = $x("//*[@class = 'digi-products-grid digi-products-grid_horde']/div[1]/div/div[3]/a");
 
     ActionsHelper actionsHelper = new ActionsHelper();
+    private static final WebConfig webConfig = ConfigReader.Instance.read();
 
     @Step("Открыть страницу")
     public MainPage openPage() {
@@ -45,13 +48,13 @@ public class MainPage {
 
     @Step("Ввести логин")
     public MainPage setLogin(){
-        loginInput.setValue("5z6zx@mechanicspedia.com");
+        loginInput.setValue(webConfig.getLogin());
         return this;
     }
 
     @Step("Ввести пароль")
     public MainPage setPassword(){
-        passwordInput.setValue("123456");
+        passwordInput.setValue(webConfig.getPassword());
         return this;
     }
 
