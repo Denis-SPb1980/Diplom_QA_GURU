@@ -48,13 +48,21 @@ public class MainPage {
 
     @Step("Ввести логин")
     public MainPage setLogin(){
-        loginInput.setValue(webConfig.getLogin());
+        String username = System.getenv("LOGIN");
+        if (username == null) {
+            username = webConfig.getLogin();
+        }
+        loginInput.setValue(username);
         return this;
     }
 
     @Step("Ввести пароль")
     public MainPage setPassword(){
-        passwordInput.setValue(webConfig.getPassword());
+        String password = System.getenv("PASSWORD");
+        if (password == null) {
+            password = webConfig.getPassword();
+        }
+        passwordInput.setValue(password);
         return this;
     }
 
