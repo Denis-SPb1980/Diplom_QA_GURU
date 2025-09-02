@@ -6,7 +6,7 @@ import utils.TestData;
 import web.pages.*;
 
 @Epic("Web")
-//@Tag("web")
+@Tag("web")
 public class PiterGsmTests extends BaseTest{
 
     MainPage mainPage = new MainPage();
@@ -19,7 +19,6 @@ public class PiterGsmTests extends BaseTest{
 
     @Test
     @DisplayName("Успешная авторизация по почте и паролю")
-    @Tag("web")
     public void authorizationMarketTest() {
         mainPage.openPage()
                 .clickLogin()
