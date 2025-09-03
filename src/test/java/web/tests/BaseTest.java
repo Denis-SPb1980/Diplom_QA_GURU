@@ -1,5 +1,6 @@
 package web.tests;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.ConfigReader;
 import config.ProjectConfiguration;
@@ -26,10 +27,14 @@ public class BaseTest {
     }
 
     @AfterEach
-    void addAttachments() {
+    void tearDown() {
         Attach.screenshotAs("Last screenshots");
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+
+        Selenide.clearBrowserCookies();
+        Selenide.clearBrowserLocalStorage();
+        Selenide.closeWebDriver();
     }
 }
