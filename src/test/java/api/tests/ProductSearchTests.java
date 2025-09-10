@@ -6,6 +6,8 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static api.specs.SearchSpec.requestSearchSpec;
 import static api.specs.SearchSpec.responseSearchSpec;
@@ -23,16 +25,19 @@ public class ProductSearchTests {
     String nameProduct = "iphone 15";
     String sizeProducts = "5";
 
-    @Test
+    @ValueSource(strings = {
+      "iphone 15", "ipad 11", "airpods pro 2"
+    })
+    @ParameterizedTest
     @DisplayName("Успешный поиск товара")
-    void successfulProductSearchTest() {
+    void successfulProductSearchTest(String searchNameProduct) {
 
         step(String.format("Поиск товара с передачей квери параметра size %s", sizeProducts), () ->
-                given(requestSearchSpec(nameProduct, sizeProducts, productSearch.getApiKey()))
+                given(requestSearchSpec(searchNameProduct, sizeProducts, productSearch.getApiKey()))
                         .when()
                         .get(SEARCH_URI)
                         .then()
-                        .spec(responseSearchSpec(200, nameProduct, 5))
+                        .spec(responseSearchSpec(200, searchNameProduct, 5))
                         .extract());
     }
 
