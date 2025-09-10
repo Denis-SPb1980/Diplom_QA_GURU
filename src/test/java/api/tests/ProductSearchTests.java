@@ -22,7 +22,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ProductSearchTests {
 
     ProductSearchRequest productSearch = new ProductSearchRequest();
-    String nameProduct = "iphone 15";
     String sizeProducts = "5";
 
     @ValueSource(strings = {
@@ -47,7 +46,7 @@ public class ProductSearchTests {
 
         ProductSearchResponse response = step("Вызов метода без передачи парарметра 'apiKey'", () ->
                 given(requestSearchSpec(sizeProducts))
-                        .multiPart("st", nameProduct)
+                        .multiPart("st",  "iphone 16")
                         .when()
                         .get(SEARCH_URI)
                         .then()
