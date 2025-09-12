@@ -1,6 +1,5 @@
 package api.specs;
 
-import io.qameta.allure.Step;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
@@ -27,7 +26,6 @@ public class AddToCartSpec {
                 .log().headers();
     }
 
-    @Step("Проверка ответа метода")
     public static ResponseSpecification responseCartSpec(int expectedStatusCode, boolean expectedSuccess, String expectedIdProduct) {
         return new ResponseSpecBuilder()
                 .expectStatusCode(expectedStatusCode)
@@ -38,7 +36,6 @@ public class AddToCartSpec {
                 .build();
     }
 
-    @Step("Проверка ответа метода")
     public static ResponseSpecification responseCartSpec(int expectedStatusCode, boolean expectedSuccess) {
         return new ResponseSpecBuilder()
                 .expectStatusCode(expectedStatusCode)

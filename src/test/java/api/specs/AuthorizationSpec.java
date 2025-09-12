@@ -1,6 +1,5 @@
 package api.specs;
 
-import io.qameta.allure.Step;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
@@ -24,8 +23,6 @@ public class AuthorizationSpec {
             .log().body()
             .log().headers();
 
-
-    @Step("Проверка ответа метода")
     public static ResponseSpecification responseAuthorizationSpec(int expectedStatusCode, boolean expectedSuccess) {
         return new ResponseSpecBuilder()
                 .expectStatusCode(expectedStatusCode)

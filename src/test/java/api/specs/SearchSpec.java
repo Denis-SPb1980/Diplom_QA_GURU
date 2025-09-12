@@ -1,6 +1,5 @@
 package api.specs;
 
-import io.qameta.allure.Step;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
@@ -36,7 +35,6 @@ public class SearchSpec {
                 .multiPart("size", size);
     }
 
-    @Step("Проверка ответа метода")
     public static ResponseSpecification responseSearchSpec(int expectedStatusCode, String expectedName, int expectedSize) {
         return new ResponseSpecBuilder()
                 .expectStatusCode(expectedStatusCode)
@@ -48,7 +46,6 @@ public class SearchSpec {
                 .build();
     }
 
-    @Step("Проверка ответа метода")
     public static ResponseSpecification responseSearchSpec(int expectedStatusCode) {
         return new ResponseSpecBuilder()
                 .expectStatusCode(expectedStatusCode)
