@@ -9,9 +9,9 @@ import static constants.PiterGsmConstants.USER_AGENT;
 
 
 public class ProjectConfiguration {
-    private final WebConfig webConfig;
+    private final TestDataConfig webConfig;
 
-    public ProjectConfiguration(WebConfig webConfig) {
+    public ProjectConfiguration(TestDataConfig webConfig) {
         this.webConfig = webConfig;
     }
 

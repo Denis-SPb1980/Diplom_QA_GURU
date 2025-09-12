@@ -1,5 +1,6 @@
 package api.tests;
 
+import api.factories.AuthRequestFactory;
 import api.models.AuthorizationRequest;
 import api.models.AuthorizationResponse;
 import io.qameta.allure.Owner;
@@ -18,7 +19,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Owner(DMISHCHENKO)
 public class AuthorizationTests extends ApiBaseTest {
 
-    AuthorizationRequest loginRequest = new AuthorizationRequest();
+    AuthRequestFactory authFactory = new AuthRequestFactory();
+    AuthorizationRequest loginRequest = authFactory.createAuthRequest();
+    AuthorizationRequest incorrectLoginRequest = authFactory.createIncorrectAuthRequest();
 
     @Test
     @DisplayName("Успешная авторизация пользователя")
@@ -41,8 +44,8 @@ public class AuthorizationTests extends ApiBaseTest {
 
         AuthorizationResponse response = step("Авторизация c некорректным паролем", () ->
                 given(requestAuthorizationSpec)
-                        .multiPart("username", loginRequest.getUsername())
-                        .multiPart("password", loginRequest.getIncorrectPassword())
+                        .multiPart("username", incorrectLoginRequest.getUsername())
+                        .multiPart("password", incorrectLoginRequest.getPassword())
                         .when()
                         .post("/login.php")
                         .then()

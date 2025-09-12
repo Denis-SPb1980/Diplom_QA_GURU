@@ -4,7 +4,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.ConfigReader;
 import config.ProjectConfiguration;
-import config.WebConfig;
+import config.TestDataConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest {
 
-    private static final WebConfig webConfig = ConfigReader.Instance.read();
+    private static final TestDataConfig webConfig = ConfigReader.Instance.read();
 
     @BeforeAll
     static void beforeAll() {

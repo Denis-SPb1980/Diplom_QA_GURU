@@ -1,10 +1,13 @@
 package api.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AuthorizationRequest {
-    private final String username = "5z6zx@mechanicspedia.com";
-    private final String password = "123456";
-    private final String incorrectPassword = "1234567";
+    private String username;
+    private String password;
 }

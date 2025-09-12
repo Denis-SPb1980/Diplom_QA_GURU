@@ -1,6 +1,6 @@
 package api.tests;
 
-import api.models.ProductSearchRequest;
+import api.factories.ProductSearchFactory;
 import api.models.ProductSearchResponse;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Owner(DMISHCHENKO)
 public class ProductSearchTests {
 
-    ProductSearchRequest productSearch = new ProductSearchRequest();
+    ProductSearchFactory productFactory = new ProductSearchFactory();
     String sizeProducts = "5";
 
     @ValueSource(strings = {
@@ -32,7 +32,7 @@ public class ProductSearchTests {
     void successfulProductSearchTest(String searchNameProduct) {
 
         step(String.format("Поиск товара с передачей квери параметра size %s", sizeProducts), () ->
-                given(requestSearchSpec(searchNameProduct, sizeProducts, productSearch.getApiKey()))
+                given(requestSearchSpec(searchNameProduct, sizeProducts, productFactory.getApiKey()))
                         .when()
                         .get(SEARCH_URI)
                         .then()
@@ -65,7 +65,7 @@ public class ProductSearchTests {
 
         ProductSearchResponse response = step("Вызов метода без передачи параметра 'SearchTerm'", () ->
                 given(requestSearchSpec(sizeProducts))
-                        .multiPart("apiKey", productSearch.getApiKey())
+                        .multiPart("apiKey", productFactory.getApiKey())
                         .when()
                         .get(SEARCH_URI)
                         .then()
@@ -84,7 +84,7 @@ public class ProductSearchTests {
     void searchQueryWasPassedEmptyTest() {
 
         ProductSearchResponse response = step("Вызов метода с пустым значением поиска", () ->
-                given(requestSearchSpec("", sizeProducts, productSearch.getApiKey()))
+                given(requestSearchSpec("", sizeProducts, productFactory.getApiKey()))
                         .when()
                         .get(SEARCH_URI)
                         .then()

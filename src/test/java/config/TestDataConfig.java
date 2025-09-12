@@ -7,7 +7,7 @@ import java.net.URL;
 @Config.Sources({
         "classpath:${env}.properties"
 })
-public interface WebConfig extends Config {
+public interface TestDataConfig extends Config {
     @Key("browser")
     @DefaultValue("chrome")
     String getBrowserName();
@@ -37,4 +37,7 @@ public interface WebConfig extends Config {
 
     @Key("password")
     String getPassword();
+
+    @Key("apiKey")
+    String getApiKey();
 }

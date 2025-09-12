@@ -3,7 +3,7 @@ package web.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import config.ConfigReader;
-import config.WebConfig;
+import config.TestDataConfig;
 import io.qameta.allure.Step;
 import utils.ActionsHelper;
 
@@ -24,7 +24,7 @@ public class MainPage {
     private final SelenideElement basketButton = $x("//*[@class = 'digi-products-grid digi-products-grid_horde']/div[1]/div/div[3]/a");
 
     ActionsHelper actionsHelper = new ActionsHelper();
-    private static final WebConfig webConfig = ConfigReader.Instance.read();
+    private static final TestDataConfig webConfig = ConfigReader.Instance.read();
 
     @Step("Открыть страницу")
     public MainPage openPage() {

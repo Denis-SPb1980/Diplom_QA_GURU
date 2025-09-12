@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Owner(DMISHCHENKO)
 public class AddToCartTests extends ApiBaseTest {
 
-    AddToCartRequest toCartRequest = new AddToCartRequest();
+    AddToCartRequest toCartRequest = new AddToCartRequest("42316");
 
     @Test
     @DisplayName("Успешное добавление товара в корзину")
